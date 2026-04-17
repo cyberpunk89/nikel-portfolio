@@ -1,6 +1,43 @@
 # Deployment Guide
 
-## Hosting Setup: Docker + Nginx Proxy Manager + Cloudflare Tunnel
+## Option 1: Vercel (Recommended for Next.js)
+
+### Quick Deploy
+
+1. **Connect to Vercel:**
+   - Go to [vercel.com](https://vercel.com)
+   - Import your GitHub repository: `cyberpunk89/nikel-portfolio`
+   - Vercel auto-detects Next.js projects
+
+2. **Deploy:**
+   - Click "Deploy" (no configuration needed)
+   - Wait for build to complete (~2-3 min)
+
+3. **Enable Analytics:**
+   - Analytics added via PR #1 (package: `@vercel/analytics@2.0.1`)
+   - Go to your project dashboard → Analytics
+   - Click "Enable Analytics" if not already enabled
+   - Verify: Check browser Network tab for `/_vercel/insights/*` requests
+
+4. **Custom Domain (optional):**
+   - Go to Settings → Domains
+   - Add your domain (e.g., nikel.design)
+   - Update DNS records as instructed by Vercel
+
+### Useful Vercel Commands
+
+```bash
+# Deploy from CLI (requires Vercel CLI)
+npm i -g vercel
+vercel
+
+# Pull environment variables
+vercel env pull
+```
+
+---
+
+## Option 2: Docker + Nginx Proxy Manager + Cloudflare Tunnel
 
 This guide covers deploying your Next.js portfolio site using Docker on your PC, with Nginx Proxy Manager handling reverse proxy and Cloudflare Tunnel for external access.
 
