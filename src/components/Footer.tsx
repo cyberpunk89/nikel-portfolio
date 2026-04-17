@@ -41,7 +41,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="border-t-2 border-border py-12 mt-20 bg-surface/30">
+    <footer className="border-t-2 border-border py-8 md:py-12 mt-16 md:mt-20 bg-surface/30">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
           <div>
@@ -56,14 +56,14 @@ export default function Footer() {
               EMAIL ME →
             </a>
           </div>
-          <div className="flex gap-3">
+          <div className="flex gap-2 md:gap-3">
             {socialLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="social-btn"
+                className="p-2 md:p-0 social-btn"
                 aria-label={link.label}
               >
                 {link.icon}

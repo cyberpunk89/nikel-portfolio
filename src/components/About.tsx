@@ -416,8 +416,25 @@ function TradingCard({
               >
                 {exp.roles[0]}
               </span>
+              {/* Date Stamp Badge - Desktop only */}
+              <span 
+                className="hidden md:inline-block ml-auto text-xs font-mono px-2 py-1 rounded-lg"
+                style={{ 
+                  backgroundColor: exp.period.includes('Present') ? '#a6e3a118' : `${exp.color}12`,
+                  color: exp.period.includes('Present') ? '#a6e3a1' : '#cdd6f4'
+                }}
+              >
+                {exp.period}
+              </span>
             </div>
-            <div className="flex items-center gap-3 flex-wrap">
+            {/* Location + Period - Mobile/Tablet only */}
+            <div className="flex items-center gap-2 flex-wrap md:hidden">
+              <p className="text-xs" style={{ color: '#cdd6f4', opacity: 0.5 }}>
+                {exp.location} · {exp.period}
+              </p>
+            </div>
+            {/* Location - Desktop only */}
+            <div className="hidden md:flex items-center gap-2 flex-wrap">
               <p className="text-xs" style={{ color: '#cdd6f4', opacity: 0.5 }}>
                 {exp.location}
               </p>
@@ -445,21 +462,10 @@ function TradingCard({
               )}
             </div>
           </div>
-          
-          {/* Date Stamp Badge */}
-          <div 
-            className="text-xs font-mono px-2 py-1 rounded-lg"
-            style={{ 
-              backgroundColor: exp.period.includes('Present') ? '#a6e3a118' : `${exp.color}12`,
-              color: exp.period.includes('Present') ? '#a6e3a1' : '#cdd6f4'
-            }}
-          >
-            {exp.period}
-          </div>
         </div>
         
         {/* Stats Section - Key Points */}
-        <div className="grid grid-cols-2 gap-2 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-2 mb-4">
           {exp.keyPoints.map((point, i) => (
             <div 
               key={i}
@@ -516,7 +522,7 @@ export default function About() {
           <span className="gradient-text-bold">About Me</span>
         </motion.h2>
 
-        <div className="grid md:grid-cols-12 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 mb-12 md:mb-16">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -547,7 +553,7 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="md:col-span-8 space-y-6"
           >
-            <p className="text-lg leading-relaxed">
+            <p className="text-base md:text-lg leading-relaxed">
               I'm a UI/UX designer who loves turning complex problems into simple, elegant solutions. 
               With <span className="text-accent font-semibold">5+ years of experience</span> across B2B SaaS, fintech, and e-commerce, 
               I've learned that the best design happens when research meets creativity.
@@ -585,7 +591,6 @@ export default function About() {
         >
           <h3 id="experience" className="text-2xl font-bold mb-6 font-mono">
             <span className="text-green">›</span> Experience
-            <span className="text-foreground/40 text-sm ml-2">Click to expand</span>
           </h3>
           
           <div className="space-y-2">

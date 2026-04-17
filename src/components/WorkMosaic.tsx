@@ -52,8 +52,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       transition={{ duration: 0.5, delay: index * 0.08 }}
     >
       <Link href={`/projects/${project.slug}`} className="group block">
-        <div className={`${cardClass} rounded-xl overflow-hidden min-h-36 flex`}>
-          <div className="w-80 shrink-0 bg-surface-hover overflow-hidden relative">
+        <div className={`${cardClass} rounded-xl overflow-hidden min-h-36 flex flex-col md:flex-row`}>
+          <div className="md:w-80 w-full h-48 md:h-auto shrink-0 bg-surface-hover overflow-hidden relative">
             {project.thumbnail ? (
               <img
                 src={project.thumbnail}
@@ -81,7 +81,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 })()}
               </span>
             </div>
-            <h3 className="text-lg font-medium group-hover:text-accent transition-colors font-mono line-clamp-1">
+            <h3 className="text-base md:text-lg font-medium group-hover:text-accent transition-colors font-mono line-clamp-1">
               {project.title}
             </h3>
             <p className="text-sm text-foreground/60 line-clamp-1 mt-1">

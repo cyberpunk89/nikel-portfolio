@@ -184,7 +184,7 @@ export default function Interests() {
           A collection of things that keep me sane outside of work.
         </motion.p>
 
-        <div className="interest-scroll flex gap-6 overflow-x-visible pb-4 px-2 pt-14">
+        <div className="interest-scroll flex gap-4 md:gap-6 overflow-x-visible pb-4 px-2 pt-14">
           {interests.map((interest, index) => (
             <motion.div
               key={interest.title}
@@ -193,7 +193,7 @@ export default function Interests() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ scale: 1.05, y: -8 }}
-              className="interest-card w-72 flex-shrink-0"
+              className="interest-card w-56 sm:w-64 md:w-72 flex-shrink-0"
             >
               <div className="retro-card-mauve rounded-xl p-6 cursor-default group h-full">
                 <div className="flex items-start justify-between mb-4">

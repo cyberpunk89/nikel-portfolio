@@ -208,7 +208,7 @@ export default async function ProjectPage({
         <div className="absolute inset-0 flex flex-col justify-end pb-12 px-6">
           <div className="max-w-4xl mx-auto w-full">
             <Link
-              href="/#work"
+              href="/work"
               className="inline-flex items-center text-sm text-foreground/60 hover:text-foreground mb-6 transition-colors"
             >
               ← Back to Work

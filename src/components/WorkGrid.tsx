@@ -73,7 +73,7 @@ export default function WorkGrid({ projects, showAll = false }: WorkGridProps) {
                       {project.client || "Project"}
                     </span>
                   </div>
-                  <h3 className="text-xl font-medium mb-2 group-hover:text-accent transition-all duration-300 font-mono line-clamp-1">
+                  <h3 className="text-base md:text-lg font-medium mb-2 group-hover:text-accent transition-all duration-300 font-mono line-clamp-1">
                     {project.title}
                   </h3>
                   <p className="text-foreground/60 text-sm line-clamp-2 mb-3 h-10 overflow-hidden">

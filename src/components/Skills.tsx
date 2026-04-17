@@ -71,7 +71,7 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold mb-4 font-mono"
+          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 font-mono"
         >
           <span className="gradient-text-bold">What I Bring</span>
         </motion.h2>
@@ -85,7 +85,7 @@ export default function Skills() {
           Not a list of buzzwords — these are the things I actually do day-to-day.
         </motion.p>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {skillCategories.map((category, catIndex) => (
             <motion.div
               key={category.title}

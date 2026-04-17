@@ -64,14 +64,14 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 px-6">
+    <section id="contact" className="py-16 md:py-20 px-4 md:px-6">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold mb-8 font-mono"
+          className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 md:mb-8 font-mono"
         >
           <span className="gradient-text-bold">Let&apos;s Work Together</span>
         </motion.div>
@@ -81,7 +81,7 @@ export default function Contact() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="font-mono"
+          className="font-mono w-full max-w-full overflow-hidden"
         >
           <div 
             className="rounded-lg overflow-hidden"
@@ -107,7 +107,7 @@ export default function Contact() {
             </div>
 
             {/* Terminal body */}
-            <div className="p-4 min-h-[300px]">
+            <div className="p-3 md:p-4 min-h-[250px] md:min-h-[300px]">
               {output.map((line, i) => (
                 <motion.div
                   key={i}
