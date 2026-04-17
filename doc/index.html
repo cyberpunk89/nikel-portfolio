@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Documentation | Nikel Design</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #1e1e2e;
+      color: #cdd6f4;
+      line-height: 1.6;
+    }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+    h1 { font-size: 2.5rem; margin-bottom: 1rem; color: #a6e3a1; }
+    h2 { font-size: 1.5rem; margin: 2rem 0 1rem; color: #89b4fa; }
+    h3 { font-size: 1.2rem; margin: 1.5rem 0 0.5rem; color: #f38ba8; }
+    p { margin-bottom: 1rem; opacity: 0.85; }
+    a { color: #89b4fa; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    ul, ol { margin: 1rem 0 1rem 1.5rem; }
+    li { margin-bottom: 0.5rem; }
+    code {
+      background: #313244;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    pre {
+      background: #313244;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    .card {
+      background: #313244;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+    }
+    .nav { display: flex; gap: 1rem; flex-wrap: wrap; margin: 2rem 0; }
+    .nav a {
+      background: #313244;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .nav a:hover { background: #45475a; }
+    .quick-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .step {
+      background: #313244;
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .step-num {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      background: #a6e3a1;
+      color: #1e1e2e;
+      border-radius: 50%;
+      line-height: 32px;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📚 Portfolio Documentation</h1>
+    <p>Everything you need to manage your portfolio work items, content, and media.</p>
+
+    <div class="quick-steps">
+      <div class="step">
+        <span class="step-num">1</span>
+        <h3>Add Work</h3>
+        <p>Create a new project markdown file</p>
+      </div>
+      <div class="step">
+        <span class="step-num">2</span>
+        <h3>Add Media</h3>
+        <p>Upload images & GIFs</p>
+      </div>
+      <div class="step">
+        <span class="step-num">3</span>
+        <h3>Write Content</h3>
+        <p>Format your case study</p>
+      </div>
+    </div>
+
+    <h2>📖 Guides</h2>
+    <div class="nav">
+      <a href="guides/adding-work.html">Adding New Work Items</a>
+      <a href="guides/adding-media.html">Adding Images & GIFs</a>
+      <a href="guides/content-format.html">Content Formatting</a>
+    </div>
+
+    <h2>📋 Reference</h2>
+    <div class="nav">
+      <a href="reference/frontmatter.html">Frontmatter Fields</a>
+      <a href="reference/project-examples.html">Project Examples</a>
+    </div>
+
+    <h2>⚡ Quick Reference</h2>
+    <div class="card">
+      <h3>Project Location</h3>
+      <p><code>content/projects/</code></p>
+      
+      <h3>Add New Project</h3>
+      <ol>
+        <li>Create new file: <code>content/projects/your-project.md</code></li>
+        <li>Add frontmatter at top</li>
+        <li>Write your case study content</li>
+        <li>Run <code>npm run build</code> to test</li>
+      </ol>
+
+      <h3>Hide a Project</h3>
+      <p>Add <code>hidden: true</code> to frontmatter to hide from grids (still accessible via direct URL)</p>
+    </div>
+
+    <h2>🔗 Related Links</h2>
+    <ul>
+      <li><a href="/work">View All Work</a></li>
+      <li><a href="/">Back to Portfolio</a></li>
+    </ul>
+  </div>
+</body>
+</html>

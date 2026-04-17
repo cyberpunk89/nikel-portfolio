@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Examples | Portfolio Documentation</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #1e1e2e;
+      color: #cdd6f4;
+      line-height: 1.6;
+    }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+    h1 { font-size: 2rem; margin-bottom: 1rem; color: #a6e3a1; }
+    h2 { font-size: 1.4rem; margin: 2rem 0 1rem; color: #89b4fa; }
+    h3 { font-size: 1.1rem; margin: 1.5rem 0 0.5rem; color: #f38ba8; }
+    p { margin-bottom: 1rem; opacity: 0.85; }
+    a { color: #89b4fa; }
+    code {
+      background: #313244;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.9em;
+    }
+    pre {
+      background: #313244;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    .card {
+      background: #313244;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .showcase {
+      border: 1px solid #a6e3a1;
+      background: rgba(166, 227, 161, 0.1);
+    }
+    .hidden {
+      border: 1px solid #f38ba8;
+      background: rgba(243, 139, 168, 0.1);
+    }
+    .breadcrumb { margin-bottom: 2rem; opacity: 0.6; }
+    .breadcrumb a { opacity: 0.8; }
+    ul { margin: 1rem 0 1rem 1.5rem; }
+    li { margin-bottom: 0.5rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #45475a; }
+    th { color: #a6e3a1; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">← Documentation Home</a>
+    </div>
+
+    <h1>📁 Project Examples</h1>
+    <p>Reference existing projects to understand what makes a great portfolio entry.</p>
+
+    <div class="card">
+      <h2>Work Page Layout</h2>
+      <p>Projects are displayed in a <strong>list view</strong> with horizontal cards:</p>
+      <pre>+------------------------------------------+
+| [IMAGE]  |  Client • Year              |
+|  320px   |  Title                      |
+|   w-80   |  Description...             |
+|          |  [Tag] [Tag] [Tag]          |
++------------------------------------------+</pre>
+      <p>Each card shows: thumbnail image (left), project info (right). All cards have equal height with fixed 320px image width.</p>
+    </div>
+
+    <h2>Currently Showcased Projects</h2>
+    <p>These projects appear in your work list and are fully styled.</p>
+
+    <div class="card showcase">
+      <h3>1. Doula</h3>
+      <p><strong>Full case study:</strong> <a href="/projects/doula">View on site →</a></p>
+      <p>Features: Background, challenge, research, IA, symptom tracker sections, CTA button</p>
+      <ul>
+        <li>Rich content with multiple sections</li>
+        <li>Research and process documentation</li>
+        <li>External CTA link to Behance</li>
+      </ul>
+    </div>
+
+    <div class="card showcase">
+      <h3>2. Sirelo - Shipping Calculator</h3>
+      <p><strong>Full case study:</strong> <a href="/projects/sirelo-interaction-design">View on site →</a></p>
+      <p>Features: Challenge, requirements, UX insights, solutions, challenges, outcome</p>
+      <ul>
+        <li>Professional UX case study format</li>
+        <li>Related Experience card (client links to About)</li>
+        <li>CTA button to Behance</li>
+      </ul>
+    </div>
+
+    <div class="card showcase">
+      <h3>3. Twitch App - IA Redesign</h3>
+      <p><strong>Full case study:</strong> <a href="/projects/twitchapp">View on site →</a></p>
+      <p>Features: Background, IA analysis, problem identification, prototyping</p>
+      <ul>
+        <li>Technical deep-dive (Information Architecture)</li>
+        <li>Before/after comparisons</li>
+        <li>External link to Medium</li>
+      </ul>
+    </div>
+
+    <div class="card showcase">
+      <h3>4. Beautiful Homes</h3>
+      <p><strong>Full case study:</strong> <a href="/projects/beautiful-homes">View on site →</a></p>
+      <p>Features: Desktop UX design for Asian Paints platform</p>
+      <ul>
+        <li>Process documentation</li>
+        <li>User research focus</li>
+      </ul>
+    </div>
+
+    <div class="card showcase">
+      <h3>5. Sagefund Branding</h3>
+      <p><strong>Full case study:</strong> <a href="/projects/sagefund-branding">View on site →</a></p>
+      <p>Features: Brand identity from scratch</p>
+      <ul>
+        <li>Brand strategy documentation</li>
+        <li>Research into audience</li>
+      </ul>
+    </div>
+
+    <div class="card showcase">
+      <h3>6. BBC News App</h3>
+      <p><strong>Full case study:</strong> <a href="/projects/bbc">View on site →</a></p>
+      <p>Features: Early UX case study</p>
+      <ul>
+        <li>UX Research focus</li>
+        <li>Prototype showcase</li>
+      </ul>
+    </div>
+
+    <div class="card showcase">
+      <h3>7. CoorpID Design Challenge</h3>
+      <p><strong>Full case study:</strong> <a href="/projects/coorpid-design-challenge">View on site →</a></p>
+      <p>Features: Service design for B2B onboarding</p>
+      <ul>
+        <li>Service design methodology</li>
+        <li>Related Experience card (CoorpID at ING Bank)</li>
+      </ul>
+    </div>
+
+    <div class="card showcase">
+      <h3>8. Sagefund Design Challenge</h3>
+      <p><strong>Full case study:</strong> <a href="/projects/sagefund-design-challenge">View on site →</a></p>
+      <p>Features: Research-first approach exploration</p>
+      <ul>
+        <li>UX research focus</li>
+        <li>Related Experience card (Sagefund)</li>
+      </ul>
+    </div>
+
+    <div class="card showcase">
+      <h3>9. Sirelo Homepage Redesign</h3>
+      <p><strong>Full case study:</strong> <a href="/projects/sirelo-homepage-redesign-journey">View on site →</a></p>
+      <p>Features: Full homepage redesign journey</p>
+      <ul>
+        <li>Website redesign process</li>
+        <li>Design system creation</li>
+        <li>Related Experience card (Sirelo)</li>
+      </ul>
+    </div>
+
+    <h2>Hidden Projects</h2>
+    <p>These have <code>hidden: true</code> and don't appear in the work list but are accessible via direct URL.</p>
+
+    <div class="card hidden">
+      <ul>
+        <li><a href="/projects/case-study-minmax">Min/Max Game UI</a> - Self-directed project</li>
+      </ul>
+    </div>
+
+    <h2>What Makes a Good Project?</h2>
+    <div class="card">
+      <h3>✅ Do Include</h3>
+      <ul>
+        <li>Clear problem statement (The Challenge)</li>
+        <li>Research and insights</li>
+        <li>Design process explanation</li>
+        <li>Screenshots/mockups</li>
+        <li>Outcome and results</li>
+        <li>External link to full case study (Behance/Medium)</li>
+      </ul>
+
+      <h3>❌ Avoid</h3>
+      <ul>
+        <li>Very brief content (< 30 lines)</li>
+        <li>No clear structure</li>
+        <li>Missing images</li>
+        <li>No problem/solution clarity</li>
+      </ul>
+    </div>
+
+    <h2>Quick Reference</h2>
+    <ul>
+      <li><strong>Show a project:</strong> Remove <code>hidden</code> field or set to <code>false</code></li>
+      <li><strong>Hide a project:</strong> Add <code>hidden: true</code></li>
+      <li><strong>Link to experience:</strong> Match <code>client</code> to experience in About section</li>
+      <li><strong>Thumbnail:</strong> Place at <code>public/media/projects/[slug]/thumbnail.png</code></li>
+    </ul>
+
+    <h2>Next Steps</h2>
+    <ul>
+      <li><a href="adding-work.html">Adding Work Items →</a></li>
+      <li><a href="../frontmatter.html">Frontmatter Reference →</a></li>
+    </ul>
+  </div>
+</body>
+</html>

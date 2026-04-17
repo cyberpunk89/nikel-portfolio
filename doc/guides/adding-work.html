@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adding Work Items | Portfolio Documentation</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #1e1e2e;
+      color: #cdd6f4;
+      line-height: 1.6;
+    }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+    h1 { font-size: 2rem; margin-bottom: 1rem; color: #a6e3a1; }
+    h2 { font-size: 1.4rem; margin: 2rem 0 1rem; color: #89b4fa; }
+    h3 { font-size: 1.1rem; margin: 1.5rem 0 0.5rem; color: #f38ba8; }
+    p { margin-bottom: 1rem; opacity: 0.85; }
+    a { color: #89b4fa; }
+    code {
+      background: #313244;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.9em;
+    }
+    pre {
+      background: #313244;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    .card {
+      background: #313244;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .warning {
+      background: rgba(243, 139, 168, 0.15);
+      border: 1px solid #f38ba8;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    .success {
+      background: rgba(166, 227, 161, 0.15);
+      border: 1px solid #a6e3a1;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    .info {
+      background: rgba(137, 180, 250, 0.15);
+      border: 1px solid #89b4fa;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    ol, ul { margin: 1rem 0 1rem 1.5rem; }
+    li { margin-bottom: 0.75rem; }
+    .breadcrumb { margin-bottom: 2rem; opacity: 0.6; }
+    .breadcrumb a { opacity: 0.8; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #45475a; }
+    th { color: #a6e3a1; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">← Documentation Home</a>
+    </div>
+
+    <h1>📝 Adding New Work Items</h1>
+    <p>Step-by-step guide to adding a new project case study to your portfolio.</p>
+
+    <div class="card">
+      <h2>Overview</h2>
+      <p>Projects are stored as markdown files in <code>content/projects/</code>. Each file represents one case study with:</p>
+      <ul>
+        <li><strong>Frontmatter</strong> - Metadata at the top (title, client, date, etc.)</li>
+        <li><strong>Content</strong> - Your case study written in markdown</li>
+        <li><strong>Thumbnail Image</strong> - Stored locally in <code>media/projects/[slug]/thumbnail.png</code></li>
+      </ul>
+    </div>
+
+    <h2>Step 1: Create the File & Folder</h2>
+    <p>Create a new markdown file in <code>content/projects/</code> and a folder in <code>public/media/projects/</code>:</p>
+    <pre>content/projects/my-project.md
+public/media/projects/my-project/thumbnail.png</pre>
+
+    <p><strong>Filename rules:</strong></p>
+    <ul>
+      <li>Use lowercase letters</li>
+      <li>Use hyphens (-) instead of spaces</li>
+      <li>Keep it short but descriptive</li>
+      <li>Example: <code>sirelo-shipping-calculator.md</code></li>
+    </ul>
+
+    <div class="info">
+      <p><strong>Folder Structure:</strong> The project folder name must match the markdown filename (without extension).</p>
+    </div>
+
+    <h2>Step 2: Add Frontmatter</h2>
+    <p>Every project needs frontmatter at the top of the file. Copy this template:</p>
+
+    <pre>---
+title: "Your Project Title"
+client: "Company Name"
+date: "2024-01-01"
+description: "A short description for project cards."
+tags: ["Tag1", "Tag2"]
+thumbnail: "/media/projects/my-project/thumbnail.png"
+---
+
+# Your Project Title
+
+Your case study content starts here...</pre>
+
+    <div class="card">
+      <h3>Required Fields</h3>
+      <ul>
+        <li><strong>title</strong> - Project title (appears as page title)</li>
+        <li><strong>client</strong> - Company/client name (used to link to experience cards)</li>
+        <li><strong>date</strong> - Date in YYYY-MM-DD format</li>
+        <li><strong>description</strong> - Short summary shown on project cards</li>
+      </ul>
+
+      <h3>Optional Fields</h3>
+      <ul>
+        <li><strong>tags</strong> - Array of tags for filtering</li>
+        <li><strong>thumbnail</strong> - Local path to thumbnail image</li>
+        <li><strong>hidden</strong> - Set to <code>true</code> to hide from grids</li>
+      </ul>
+    </div>
+
+    <h2>Step 3: Add Thumbnail Image</h2>
+    <p>Place your thumbnail image in <code>public/media/projects/[slug]/thumbnail.png</code></p>
+
+    <div class="card">
+      <h3>Image Specifications</h3>
+      <table>
+        <tr>
+          <th>Property</th>
+          <th>Value</th>
+          <th>Notes</th>
+        </tr>
+        <tr>
+          <td>Location</td>
+          <td><code>public/media/projects/[slug]/</code></td>
+          <td>Must match project slug</td>
+        </tr>
+        <tr>
+          <td>Filename</td>
+          <td><code>thumbnail.png</code></td>
+          <td>Always "thumbnail"</td>
+        </tr>
+        <tr>
+          <td>Width</td>
+          <td>640px minimum</td>
+          <td>Fixed display width is 320px</td>
+        </tr>
+        <tr>
+          <td>Height</td>
+          <td>Auto (keep aspect ratio)</td>
+          <td>No cropping needed</td>
+        </tr>
+        <tr>
+          <td>Aspect Ratio</td>
+          <td>Any</td>
+          <td>16:9, 4:3, 1:1, 3:4 all work</td>
+        </tr>
+        <tr>
+          <td>Formats</td>
+          <td>PNG, JPG, WebP</td>
+          <td>PNG recommended</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="info">
+      <p><strong>Important:</strong> The same thumbnail image is used for both the work list view AND the project hero section. No separate hero image needed.</p>
+    </div>
+
+    <h2>Step 4: Write Your Content</h2>
+    <p>After the frontmatter (the <code>---</code> line), write your case study content using markdown.</p>
+    <p>See <a href="content-format.html">Content Formatting Guide</a> for details.</p>
+
+    <h2>Step 5: Link to Experience (Optional)</h2>
+    <p>If you want a "Related Experience" card to appear on your project page, the <code>client</code> name must match an entry in the experience mapping.</p>
+
+    <div class="card">
+      <h3>Currently Supported Clients</h3>
+      <ul>
+        <li><strong>Sirelo</strong> - Shows Sirelo experience card</li>
+        <li><strong>CoorpID (ING Bank)</strong> - Shows CoorpID experience card</li>
+        <li><strong>Sagefund</strong> - Shows Sagefund experience card</li>
+      </ul>
+      <p>To add more, edit <code>src/app/projects/[slug]/page.tsx</code> and add to <code>clientExperienceMap</code>.</p>
+    </div>
+
+    <h2>Step 6: Test Your Project</h2>
+    <div class="success">
+      <p><strong>Build the project:</strong> Run <code>npm run build</code> to verify everything compiles correctly.</p>
+    </div>
+
+    <div class="warning">
+      <p><strong>Note:</strong> Hidden projects are accessible via direct URL but won't appear in the project grid.</p>
+    </div>
+
+    <h2>Quick Checklist</h2>
+    <ul>
+      <li>✅ Created file in <code>content/projects/</code></li>
+      <li>✅ Created folder in <code>public/media/projects/[slug]/</code></li>
+      <li>✅ Added thumbnail image (640px+ width, auto height)</li>
+      <li>✅ Added all required frontmatter fields</li>
+      <li>✅ Wrote case study content</li>
+      <li>✅ Tested with <code>npm run build</code></li>
+    </ul>
+
+    <h2>Next Steps</h2>
+    <ul>
+      <li><a href="adding-media.html">Adding Images & GIFs →</a></li>
+      <li><a href="content-format.html">Content Formatting →</a></li>
+      <li><a href="../reference/frontmatter.html">Frontmatter Reference →</a></li>
+    </ul>
+  </div>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content Formatting | Portfolio Documentation</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #1e1e2e;
+      color: #cdd6f4;
+      line-height: 1.6;
+    }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+    h1 { font-size: 2rem; margin-bottom: 1rem; color: #a6e3a1; }
+    h2 { font-size: 1.4rem; margin: 2rem 0 1rem; color: #89b4fa; }
+    h3 { font-size: 1.1rem; margin: 1.5rem 0 0.5rem; color: #f38ba8; }
+    p { margin-bottom: 1rem; opacity: 0.85; }
+    a { color: #89b4fa; }
+    code {
+      background: #313244;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.9em;
+    }
+    pre {
+      background: #313244;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    .card {
+      background: #313244;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .example {
+      background: #1e1e2e;
+      border: 1px solid #45475a;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    .example-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #a6e3a1;
+      margin-bottom: 0.5rem;
+    }
+    ol, ul { margin: 1rem 0 1rem 1.5rem; }
+    li { margin-bottom: 0.75rem; }
+    .breadcrumb { margin-bottom: 2rem; opacity: 0.6; }
+    .breadcrumb a { opacity: 0.8; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">← Documentation Home</a>
+    </div>
+
+    <h1>✍️ Content Formatting Guide</h1>
+    <p>Learn how to format your case study content using markdown.</p>
+
+    <h2>Basic Text Formatting</h2>
+    
+    <div class="example">
+      <div class="example-label">Bold Text</div>
+      <pre>**Bold text here**</pre>
+      <p>Renders as: <strong>Bold text here</strong></p>
+    </div>
+
+    <div class="example">
+      <div class="example-label">Italic Text</div>
+      <pre>*Italic text here*</pre>
+      <p>Renders as: <em>Italic text here</em></p>
+    </div>
+
+    <div class="example">
+      <div class="example-label">Bold + Italic</div>
+      <pre>***Bold and italic***</pre>
+    </div>
+
+    <h2>Headings</h2>
+    <p>Use headings to structure your case study:</p>
+
+    <div class="example">
+      <pre># Main Title (H1)
+## Section Title (H2)
+### Subsection (H3)</pre>
+    </div>
+
+    <div class="card">
+      <h3>Recommended Structure</h3>
+      <pre>## Overview
+## The Challenge
+## Research
+## Design Process
+## Outcome</pre>
+    </div>
+
+    <h2>Lists</h2>
+
+    <div class="example">
+      <div class="example-label">Unordered List</div>
+      <pre>- First item
+- Second item
+- Third item</pre>
+    </div>
+
+    <div class="example">
+      <div class="example-label">Ordered List</div>
+      <pre>1. First step
+2. Second step
+3. Third step</pre>
+    </div>
+
+    <div class="example">
+      <div class="example-label">Nested List</div>
+      <pre>- Parent item
+  - Child item
+  - Another child
+- Another parent</pre>
+    </div>
+
+    <h2>Images</h2>
+    <div class="example">
+      <pre>![Alt text describing image](image-url.png)</pre>
+    </div>
+
+    <div class="card">
+      <h3>Image Best Practices</h3>
+      <ul>
+        <li>Always include descriptive alt text</li>
+        <li>Use consistent naming for images</li>
+        <li>Optimize images before uploading</li>
+      </ul>
+    </div>
+
+    <h2>Links</h2>
+
+    <div class="example">
+      <div class="example-label">External Link</div>
+      <pre>[View on Behance](https://behance.net/project)</pre>
+    </div>
+
+    <div class="card">
+      <h3>🔗 Automatic CTA Buttons</h3>
+      <p>Links to external sites (Behance, Medium, etc.) automatically become styled buttons at the bottom of your article:</p>
+      <pre>[See full case study on Behance →](https://behance.net/...)</pre>
+    </div>
+
+    <h2>Section Dividers</h2>
+    <p>Use horizontal rules to separate sections:</p>
+    <pre>---
+
+## Next Section</pre>
+
+    <h2>Blockquotes</h2>
+    <div class="example">
+      <pre>> This is a quote or callout</pre>
+    </div>
+
+    <h2>Code Blocks</h2>
+    <div class="example">
+      <pre>`inline code`
+
+```
+code block
+multiple lines
+```</pre>
+    </div>
+
+    <h2>Complete Example</h2>
+    <div class="card">
+      <pre>---
+title: "My Project"
+client: "Company"
+date: "2024-01-01"
+description: "A brief description."
+---
+
+# My Project
+
+**Role:** UX Designer  
+**Year:** 2024
+
+---
+
+## Overview
+
+This project was about *solving a problem* through design.
+
+### Key challenges
+
+- Challenge one
+- Challenge two
+- Challenge three
+
+---
+
+## Solution
+
+![Final design](design-screenshot.png)
+
+The solution included:
+
+1. Research phase
+2. Design phase
+3. Testing phase
+
+---
+
+[View full case study →](https://behance.net/...)</pre>
+    </div>
+
+    <h2>Next Steps</h2>
+    <ul>
+      <li><a href="adding-work.html">Adding Work Items →</a></li>
+      <li><a href="adding-media.html">Adding Images & GIFs →</a></li>
+      <li><a href="../reference/frontmatter.html">Frontmatter Reference →</a></li>
+    </ul>
+  </div>
+</body>
+</html>

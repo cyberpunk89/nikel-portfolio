@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontmatter Reference | Portfolio Documentation</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #1e1e2e;
+      color: #cdd6f4;
+      line-height: 1.6;
+    }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+    h1 { font-size: 2rem; margin-bottom: 1rem; color: #a6e3a1; }
+    h2 { font-size: 1.4rem; margin: 2rem 0 1rem; color: #89b4fa; }
+    h3 { font-size: 1.1rem; margin: 1.5rem 0 0.5rem; color: #f38ba8; }
+    p { margin-bottom: 1rem; opacity: 0.85; }
+    a { color: #89b4fa; }
+    code {
+      background: #313244;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.9em;
+    }
+    pre {
+      background: #313244;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    .card {
+      background: #313244;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #45475a; }
+    th { color: #a6e3a1; width: 20%; }
+    .required { color: #f38ba8; }
+    .optional { color: #f9e2af; }
+    .breadcrumb { margin-bottom: 2rem; opacity: 0.6; }
+    .breadcrumb a { opacity: 0.8; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">← Documentation Home</a>
+    </div>
+
+    <h1>📋 Frontmatter Reference</h1>
+    <p>Complete reference for all frontmatter fields available in project files.</p>
+
+    <div class="card">
+      <h2>All Available Fields</h2>
+      <table>
+        <tr>
+          <th>Field</th>
+          <th>Required</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><code>title</code></td>
+          <td><span class="required">Yes</span></td>
+          <td>String</td>
+          <td>Project title shown as page heading</td>
+        </tr>
+        <tr>
+          <td><code>client</code></td>
+          <td><span class="required">Yes</span></td>
+          <td>String</td>
+          <td>Company/client name. Used to link to experience cards.</td>
+        </tr>
+        <tr>
+          <td><code>date</code></td>
+          <td><span class="required">Yes</span></td>
+          <td>String</td>
+          <td>Project date in YYYY-MM-DD format</td>
+        </tr>
+        <tr>
+          <td><code>description</code></td>
+          <td><span class="required">Yes</span></td>
+          <td>String</td>
+          <td>Short summary for project cards (1-2 sentences)</td>
+        </tr>
+        <tr>
+          <td><code>tags</code></td>
+          <td><span class="optional">No</span></td>
+          <td>Array</td>
+          <td>List of tags for filtering, e.g. <code>["UX", "UI"]</code></td>
+        </tr>
+        <tr>
+          <td><code>thumbnail</code></td>
+          <td><span class="optional">No</span></td>
+          <td>String</td>
+          <td>URL for hero image on project cards</td>
+        </tr>
+        <tr>
+          <td><code>hidden</code></td>
+          <td><span class="optional">No</span></td>
+          <td>Boolean</td>
+          <td>Set <code>true</code> to hide from grids</td>
+        </tr>
+      </table>
+    </div>
+
+    <h2>Example Frontmatter</h2>
+    <div class="card">
+      <pre>---
+title: "Efficiency and Fun | Designing a shipping calculator"
+client: "Sirelo"
+date: "2023-01-01"
+description: "Designing a tool that's functional and — somehow — fun to use."
+tags: ["Interaction Design", "UX", "Tool Design"]
+thumbnail: "https://uploads-ssl.webflow.com/..."
+---</pre>
+    </div>
+
+    <h2>Field Details</h2>
+
+    <h3>title</h3>
+    <p>The main title of your project. This appears as:</p>
+    <ul>
+      <li>Page heading on the project page</li>
+      <li>Title in browser tab</li>
+    </ul>
+    <pre>title: "My Project Title"</pre>
+
+    <h3>client</h3>
+    <p>The company or client name. Important for linking to experience cards:</p>
+    <ul>
+      <li><code>"Sirelo"</code> → Shows Sirelo experience card</li>
+    </ul>
+    <pre>client: "Company Name"</pre>
+
+    <h3>date</h3>
+    <p>Use ISO format YYYY-MM-DD. This determines sorting order.</p>
+    <pre>date: "2024-01-01"</pre>
+
+    <h3>description</h3>
+    <p>Short text shown on project cards in the work grid. Keep it concise (1-2 sentences).</p>
+    <pre>description: "A brief description of the project."</pre>
+
+    <h3>tags</h3>
+    <p>Optional array of tags. Currently displayed on project cards.</p>
+    <pre>tags: ["UX", "UI Design", "Research"]</pre>
+
+    <h3>thumbnail</h3>
+    <p>Hero image URL. Use Webflow CDN URL for best results.</p>
+    <pre>thumbnail: "https://uploads-ssl.webflow.com/..."</pre>
+
+    <h3>hidden</h3>
+    <p>Hide from grids but keep accessible via direct URL:</p>
+    <pre>hidden: true  # Hidden from work grid
+# or omit entirely  # Shown in work grid</pre>
+
+    <h2>Quick Copy Templates</h2>
+
+    <div class="card">
+      <h3>Basic (Required Fields Only)</h3>
+      <pre>---
+title: "Project Title"
+client: "Client Name"
+date: "2024-01-01"
+description: "Short description."
+---</pre>
+    </div>
+
+    <div class="card">
+      <h3>Full (All Fields)</h3>
+      <pre>---
+title: "Project Title"
+client: "Client Name"
+date: "2024-01-01"
+description: "Short description."
+tags: ["UX", "UI"]
+thumbnail: "https://..."
+hidden: false
+---</pre>
+    </div>
+
+    <h2>Related Links</h2>
+    <ul>
+      <li><a href="adding-work.html">Adding Work Items →</a></li>
+      <li><a href="adding-media.html">Adding Images & GIFs →</a></li>
+      <li><a href="project-examples.html">Project Examples →</a></li>
+    </ul>
+  </div>
+</body>
+</html>

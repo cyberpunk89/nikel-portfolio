@@ -1,0 +1,245 @@
+---
+name: case-study-writer
+description: Convert raw project notes, bullet points, or unstructured data into polished, portfolio-ready case studies. Use this whenever the user provides raw project information (notes, brief descriptions, screenshots descriptions, key decisions) and wants it transformed into a narrative-driven case study with professional structure. Triggers on phrases like "write a case study," "turn this into a case study," "case study format," or when the user provides raw project data and asks for portfolio-ready documentation. Works with any design discipline (UX, UI, product, branding, graphic design) or product work.
+compatibility: markdown output only, no special dependencies
+---
+
+# Case Study Writer
+
+Convert raw project information into narrative-driven, portfolio-ready case studies.
+
+This skill transforms bullet points, notes, screenshots, and scattered project data into cohesive case studies that follow a proven structure: one that emphasizes problem-solving, user empathy, and design reasoning—not just final outputs.
+
+## When to use this skill
+
+- **Raw notes → polished case study**: User has rough notes or descriptions of their work and wants professional documentation
+- **Multiple projects with scattered info**: User provides data for several projects that need consistent structure
+- **Screenshots + context**: User describes what they designed without full narrative; skill builds the story around the work
+- **Portfolio preparation**: User needs publication-ready case studies for Behance, personal site, or job applications
+- **Design discipline agnostic**: Works for UX, UI, product design, branding, graphic design, interaction design, or integrated projects
+
+## Process overview
+
+**Input**: Raw project data in any format
+- Bullet points
+- Brief descriptions
+- Screenshot descriptions
+- Key design decisions
+- Client/context information
+- Before/after comparisons
+- Research insights or user problems
+
+**Output**: Markdown case study with:
+- Frontmatter (title, client, date, description, tags, thumbnail path)
+- Narrative structure (Background → Challenge → Research/Process → Solution → Key decisions → Reflection)
+- Problem-centric language
+- User-empathetic tone
+- Clear design reasoning
+
+## How to use this skill
+
+### Step 1: Gather your project information
+
+Provide Claude with any or all of the following:
+
+1. **Project basics**
+   - Project name / client name
+   - Your role (UX Designer, Product Designer, UI Designer, Brand Designer, etc.)
+   - Date or time period
+   - Brief description of what the project was about
+
+2. **The problem**
+   - What was broken or missing?
+   - Who experienced the problem? (users, business, both?)
+   - What friction did it create?
+   - Why did it matter?
+
+3. **Your process**
+   - Research you conducted
+   - Key insights or findings
+   - Design decisions you made (and *why*)
+   - Iterations or refinements
+   - Tools used
+
+4. **The solution**
+   - What changed visually/structurally?
+   - How does it solve the problem?
+   - What impact did it have?
+
+5. **Screenshots or visuals**
+   - Descriptions of key screens/designs
+   - Before/after comparisons
+   - Feature breakdowns
+   - How visuals support the narrative
+
+### Step 2: Share with Claude
+
+Provide the information in whatever format is easiest:
+- Paste raw notes
+- Bullet points
+- Scattered paragraphs
+- A mix of text and image descriptions
+- Ask Claude to "write a case study" or "turn this into a case study"
+
+### Step 3: Claude transforms the data
+
+The skill applies a consistent structure:
+
+**Opening (Background + Challenge)**
+- Sets context for who/what/why
+- Frames the problem in human terms
+- Establishes stakes (user frustration, business impact)
+
+**Middle (Research/Process)**
+- Shows thinking, not just output
+- Explains research or analysis that informed decisions
+- Walks through key decision points
+- Demonstrates problem-solving approach
+
+**Solution breakdown**
+- Describes changes made and *why* they matter
+- Uses user-empathetic language
+- Connects visual/structural changes back to user needs
+- Shows how the solution addresses the original problem
+
+**Key decisions summary**
+- Bullet-point recap of major decisions
+- Links each decision to outcomes
+- Demonstrates intentionality
+
+**Reflection**
+- Wraps with lessons learned or project impact
+- Contextualizes work within broader design thinking
+
+### Step 4: Refine and iterate
+
+Review the output. If something feels off:
+- "Make the challenge section more specific"
+- "Expand the research section"
+- "Add more detail about the visual changes"
+- "Tone it down / make it punchier"
+
+Claude can adjust tone, emphasis, or detail in any section.
+
+## Tone and voice guidelines
+
+The skill writes case studies in a specific voice—one that balances:
+
+- **Clarity over jargon**: Users understand design terms, but copy stays accessible
+- **Problem-first**: Always lead with what was broken or missing, not the solution
+- **User empathy**: Design choices are framed around user needs/frustrations, not aesthetic preferences
+- **Specificity**: Concrete examples beat abstract statements
+- **Confidence without arrogance**: Work speaks for itself; no overselling needed
+
+## Example transformation
+
+### Raw input:
+```
+Royal Mail booking process redesign. The current flow was confusing — weight categories weren't clear, service options were overwhelming, and sender/receiver info was split across tabs. I redesigned it with:
+- Clear weight categorization (Small, Medium, Large, XL)
+- Smart filtering for service options
+- Unified sender/receiver form
+- Modern visual language
+
+Used principle for motion prototypes. Made it faster to book, easier to understand options.
+```
+
+### Polished case study excerpt:
+```
+## The challenge
+
+Royal Mail's booking process had clear friction points:
+- Weight selection forced users to estimate and cross-reference
+- Service options were overwhelming — every available choice presented equally
+- Sender and receiver information split across separate sections, creating context switching
+
+Users came to complete a simple task (book a parcel) but encountered unnecessary complexity at each step.
+
+## The solution
+
+**Weight categorization**: Instead of abstract weight ranges, options grouped by real-world use cases...
+
+**Smart service filtering**: Rather than showing every option equally, popular services appear first...
+
+**Unified information**: Sender and receiver details now live in a single form...
+```
+
+## Customization options
+
+The skill can adjust case study emphasis based on your needs:
+
+- **Feature-heavy**: If your project involved multiple features, expand solution section with subsections for each
+- **Research-driven**: If research was central, expand that section and highlight key findings
+- **Visual-focused**: If the work was primarily visual, emphasize design language and aesthetic decisions
+- **Process-focused**: If the value is in your approach, expand the process section and make reasoning explicit
+- **Quick version**: Streamlined structure for shorter case studies (time-limited projects, design challenges)
+- **Long-form**: Extended structure for complex projects with multiple phases
+
+Just tell Claude which emphasis you prefer.
+
+## Common adjustments
+
+After the initial draft, users typically request:
+
+- **"Make the challenge more specific"** — Add concrete examples or user quotes
+- **"Expand the research section"** — Show more of the thinking that informed decisions
+- **"Shorter paragraphs"** — Easier to scan, especially for web viewing
+- **"Add a conclusion about impact"** — What changed as a result of the redesign?
+- **"More design details"** — Specific color choices, typography decisions, interaction patterns
+- **"Less technical jargon"** — Make it accessible to non-designers
+- **"Punchier tone"** — Make it more energetic/personality-driven
+- **"More humble/measured"** — Dial back claims, focus on learning
+
+Ask Claude to make these changes — the skill is designed for iteration.
+
+## What happens to your data
+
+The case study output is a markdown file ready for:
+- **Behance descriptions** (paste into project description)
+- **Portfolio website** (copy-paste into your site, format as needed)
+- **PDF export** (convert markdown to PDF for applications)
+- **Medium/LinkedIn posts** (publish directly or adapt for posting)
+
+The structure is flexible — you can reorganize sections, add images, or adjust formatting as needed for your platform.
+
+## Pro tips
+
+1. **Lead with the problem**: Best case studies start with user friction, not the solution
+2. **Show your thinking**: Explain *why* you made each design choice, not just what changed
+3. **Use specifics**: "Users wasted 3 minutes entering duplicate information" beats "the form had friction"
+4. **Respect the reader's time**: Put the most important information first; deep dives can go in subsections
+5. **Iterate on the draft**: The first version is rarely perfect; refine sections that feel weak
+6. **Customize for your audience**: A case study for designers emphasizes process; one for hiring managers emphasizes impact
+
+---
+
+## Questions to guide your project info
+
+If you're unsure what to include, Claude can ask clarifying questions. Or, use these prompts to prepare your notes:
+
+**About the project:**
+- What was the project? Who was it for (client, company, personal work)?
+- What was your role?
+- When did it happen?
+
+**About the problem:**
+- What was broken or missing?
+- Who experienced the problem?
+- How did it affect them?
+- Why did it matter (to users, business, or both)?
+
+**About your process:**
+- How did you approach it? (research, sketching, prototyping, user testing, etc.)
+- What did you learn?
+- What were the key decision points?
+
+**About the solution:**
+- What did you change (visually, structurally, or functionally)?
+- Why did you make those changes?
+- How does it solve the original problem?
+
+**About the outcome:**
+- What was the impact?
+- What would you do differently next time?
+
+The more detail you provide, the richer the case study. But Claude can work with even minimal information and ask follow-up questions as needed.
