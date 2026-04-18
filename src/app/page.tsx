@@ -4,6 +4,7 @@ import Work from "@/components/Work";
 import Writing from "@/components/Writing";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
+import Recommendations from "@/components/Recommendations";
 import Interests from "@/components/Interests";
 import Contact from "@/components/Contact";
 
@@ -18,6 +19,7 @@ export default async function Home() {
       <Writing articles={articles} />
       <About />
       <Skills />
+      <Recommendations />
       <Interests />
       <Contact />
     </>
