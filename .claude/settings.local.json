@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "Bash(curl -s http://localhost:3001/v2)",
+      "Bash(curl -s http://localhost:3001)",
+      "Bash(kill 1907212)",
+      "Bash(kill %1)",
+      "Bash(kill 1908987)",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:3002/v2)",
+      "Bash(grep -v \"^$\")",
+      "Bash(curl -s http://localhost:3003/v2)",
+      "Bash(curl -s --max-time 10 http://localhost:3003/v2)",
+      "Bash(curl -v http://localhost:3003/v2)",
+      "Bash(curl -s http://localhost:3004/v2)",
+      "Bash(curl -s http://localhost:3002/work)",
+      "Bash(curl -s http://localhost:3002/projects/sirelo-homepage-redesign-journey)",
+      "Bash(curl -s http://localhost:3002/)"
+    ]
+  }
+}

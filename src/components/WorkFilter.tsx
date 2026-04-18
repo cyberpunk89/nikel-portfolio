@@ -280,10 +280,16 @@ export default function WorkFilter({ projects }: { projects: Project[] }) {
     <div className="flex gap-8">
       <aside className="hidden md:block w-56 shrink-0">
         <div className="sticky top-24">
-          <h3 className="text-sm font-mono font-medium text-foreground/40 uppercase tracking-wider mb-4">
-            Filters
-          </h3>
-          <div className="bg-surface rounded-xl border border-border overflow-hidden">
+          <p className="text-[10px] font-mono text-foreground/35 tracking-[0.2em] mb-3 flex items-center gap-2">
+            <span className="text-accent">■</span> FILTERS
+          </p>
+          <div
+            className="overflow-hidden rounded-xl"
+            style={{
+              background: "linear-gradient(145deg, rgba(49, 50, 68, 0.8) 0%, rgba(30, 30, 46, 0.95) 100%)",
+              border: "1px solid rgba(108, 112, 134, 0.2)",
+            }}
+          >
             {filterCategories.map(category => (
               <FilterCategorySection
                 key={category.name}

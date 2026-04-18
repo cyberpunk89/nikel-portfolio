@@ -43,7 +43,7 @@
   --color-mauve: var(--mauve);
   --color-pink: var(--pink);
   --color-teal: var(--teal);
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-sans);
   --font-mono: var(--font-jetbrains);
 }
 
@@ -771,4 +771,48 @@ select:focus-visible,
 .project-content pre code {
   background: none;
   padding: 0;
+}
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.skills-ticker {
+  animation: ticker-scroll 35s linear infinite;
+  will-change: transform;
+}
+
+.skills-ticker:hover {
+  animation-play-state: paused;
+}
+
+.scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(255, 255, 255, 0.018) 3px,
+    rgba(255, 255, 255, 0.018) 4px
+  );
+}
+
+.ghost-btn {
+  border: 1px solid rgba(203, 166, 247, 0.3);
+  color: var(--accent);
+  background-color: rgba(203, 166, 247, 0.06);
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.ghost-btn:hover {
+  background-color: rgba(203, 166, 247, 0.12);
+  border-color: rgba(203, 166, 247, 0.5);
+  transform: translateY(-2px);
+}
+
+.stat-divider {
+  width: 1px;
+  height: 2.5rem;
+  background: linear-gradient(180deg, transparent, var(--border), transparent);
 }

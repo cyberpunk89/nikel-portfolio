@@ -50,7 +50,7 @@ export default function Footer() {
               <span>Nikel</span> — UI/UX Designer. Based in Belgium.
             </p>
             <a
-              href="mailto:ketkaleninad@gmail.com"
+              href="mailto:ninad.ketkale@gmail.com"
               className="btn-primary px-5 py-2 rounded-lg font-mono text-sm inline-block"
             >
               EMAIL ME →

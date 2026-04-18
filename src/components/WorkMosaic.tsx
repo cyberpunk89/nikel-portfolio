@@ -40,9 +40,15 @@ function getCardColor(slug: string): string {
   return randomColors[hash % randomColors.length];
 }
 
+const colorHex: Record<string, string> = {
+  mauve: "#cba6f7", peach: "#fab387", yellow: "#f9e2af",
+  teal: "#94e2d5", green: "#a6e3a1", blue: "#89b4fa", red: "#f38ba8",
+};
+
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const cardColor = getCardColor(project.slug);
-  const cardClass = `retro-card-${cardColor}`;
+  const accent = colorHex[cardColor] || "#cba6f7";
+  const year = (() => { const y = new Date(project.date).getFullYear(); return isNaN(y) ? "—" : y; })();
 
   return (
     <motion.div
@@ -52,8 +58,22 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       transition={{ duration: 0.5, delay: index * 0.08 }}
     >
       <Link href={`/projects/${project.slug}`} className="group block">
-        <div className={`${cardClass} rounded-xl overflow-hidden min-h-36 flex flex-col md:flex-row`}>
-          <div className="md:w-80 w-full h-48 md:h-auto shrink-0 bg-surface-hover overflow-hidden relative">
+        <div
+          className="rounded-xl overflow-hidden flex flex-col md:flex-row transition-all duration-300"
+          style={{
+            background: "linear-gradient(145deg, rgba(49, 50, 68, 0.95) 0%, rgba(30, 30, 46, 0.98) 100%)",
+            border: `1px solid ${accent}28`,
+            boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
+          }}
+        >
+          {/* Hover glow */}
+          <div
+            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none rounded-xl"
+            style={{ background: `radial-gradient(ellipse at 30% 50%, ${accent}0a 0%, transparent 60%)` }}
+          />
+
+          {/* Thumbnail */}
+          <div className="md:w-72 w-full h-48 md:h-auto shrink-0 bg-surface-hover overflow-hidden relative">
             {project.thumbnail ? (
               <img
                 src={project.thumbnail}
@@ -62,37 +82,56 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               />
             ) : (
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-foreground/20 font-mono text-4xl">
+                <span className="text-foreground/10 font-mono text-5xl">
                   {project.slug.slice(0, 2).toUpperCase()}
                 </span>
               </div>
             )}
-          </div>
-          
-          <div className="flex-1 p-6 flex flex-col justify-center">
-            <div className="flex items-center gap-2 mb-1">
-              <span className={`tag-${cardColor}`}>
-                {project.client || "Project"}
-              </span>
-              <span className="text-xs text-foreground/40 font-mono">
-                {(() => {
-                  const year = new Date(project.date).getFullYear();
-                  return isNaN(year) ? "—" : year;
-                })()}
-              </span>
+            {/* Index badge */}
+            <div
+              className="absolute top-3 left-3 text-[10px] font-mono px-2 py-0.5 rounded"
+              style={{ backgroundColor: `${accent}20`, border: `1px solid ${accent}40`, color: accent }}
+            >
+              {String(index + 1).padStart(2, "0")}
             </div>
-            <h3 className="text-base md:text-lg font-medium group-hover:text-accent transition-colors font-mono line-clamp-1">
-              {project.title}
-            </h3>
-            <p className="text-sm text-foreground/60 line-clamp-1 mt-1">
-              {project.description}
-            </p>
-            <div className="flex flex-wrap gap-1.5 mt-2">
-              {project.tags?.slice(0, 3).map((tag) => (
-                <span key={tag} className="text-xs px-2 py-0.5 rounded bg-surface-hover text-foreground/60">
-                  {tag}
-                </span>
-              ))}
+          </div>
+
+          {/* Content */}
+          <div className="flex-1 p-5 md:p-6 flex flex-col justify-between relative">
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <span className={`tag-${cardColor}`}>{project.client || "Project"}</span>
+                <span className="text-[11px] text-foreground/35 font-mono">{year}</span>
+              </div>
+              <h3
+                className="text-base md:text-lg font-medium font-mono mb-2 leading-snug transition-colors duration-300"
+                style={{ color: "#cdd6f4" }}
+              >
+                <span className="group-hover:text-accent transition-colors duration-300">{project.title}</span>
+              </h3>
+              <p className="text-sm text-foreground/55 line-clamp-2 leading-relaxed">
+                {project.description}
+              </p>
+            </div>
+
+            <div className="mt-4 flex items-center justify-between">
+              <div className="flex flex-wrap gap-1.5">
+                {project.tags?.slice(0, 3).map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-[10px] px-2 py-0.5 rounded font-mono"
+                    style={{ backgroundColor: `${accent}10`, color: `${accent}cc`, border: `1px solid ${accent}20` }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <span
+                className="text-xs font-mono opacity-0 group-hover:opacity-100 translate-x-1 group-hover:translate-x-0 transition-all duration-300 shrink-0 ml-3"
+                style={{ color: accent }}
+              >
+                Read →
+              </span>
             </div>
           </div>
         </div>

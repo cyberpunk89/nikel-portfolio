@@ -32,12 +32,36 @@ export default function Header() {
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
-        backgroundColor: scrolled ? "rgba(30, 30, 46, 0.95)" : "rgba(30, 30, 46, 0.8)",
-        backdropFilter: "blur(12px)",
+        backgroundColor: scrolled ? "rgba(30, 30, 46, 0.97)" : "rgba(30, 30, 46, 0.85)",
+        backdropFilter: "blur(16px)",
         boxShadow: scrolled ? "0 4px 24px rgba(0, 0, 0, 0.3)" : "none",
         borderBottom: scrolled ? "1px solid rgba(108, 112, 134, 0.3)" : "1px solid transparent",
       }}
     >
+      {/* System status bar — desktop only */}
+      <div
+        className="hidden md:flex items-center justify-between px-6 py-1"
+        style={{
+          backgroundColor: "rgba(17, 17, 27, 0.85)",
+          borderBottom: "1px solid rgba(108, 112, 134, 0.15)",
+        }}
+      >
+        <span className="text-[10px] font-mono" style={{ color: "#45475a" }}>
+          [NIKEL.DESIGN] — SYS_v0.3
+        </span>
+        <div className="flex items-center gap-5 text-[10px] font-mono" style={{ color: "#45475a" }}>
+          <span>LOC: BELGIUM</span>
+          <span className="flex items-center gap-1.5">
+            <span
+              className="inline-block w-1.5 h-1.5 rounded-full animate-pulse"
+              style={{ backgroundColor: "#a6e3a1" }}
+            />
+            <span style={{ color: "#a6e3a1" }}>STATUS: ONLINE</span>
+          </span>
+          <span style={{ color: "#cba6f7" }}>OPEN_TO_WORK</span>
+        </div>
+      </div>
+
       <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
         <Link href="/" className="group flex items-center gap-3">
           <motion.div
