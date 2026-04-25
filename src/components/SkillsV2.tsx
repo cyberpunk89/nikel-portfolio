@@ -234,9 +234,8 @@ export default function SkillsV2() {
             transition={{ duration: 0.25 }}
           >
             <div
-              className="rounded-2xl p-6 relative overflow-hidden"
+              className="card-bg rounded-2xl p-6 relative overflow-hidden"
               style={{
-                background: "linear-gradient(145deg, rgba(49, 50, 68, 0.7) 0%, rgba(30, 30, 46, 0.9) 100%)",
                 border: `1px solid ${active.accent}18`,
                 boxShadow: `inset 0 0 60px ${active.accent}06`,
               }}

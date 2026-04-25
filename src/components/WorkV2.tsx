@@ -51,9 +51,8 @@ function FeaturedCard({ project }: { project: Project }) {
     >
       <Link href={`/projects/${project.slug}`} className="group block">
         <div
-          className="relative rounded-2xl overflow-hidden transition-all duration-500"
+          className="card-bg relative rounded-2xl overflow-hidden transition-all duration-500"
           style={{
-            background: "linear-gradient(145deg, rgba(49, 50, 68, 0.95) 0%, rgba(30, 30, 46, 0.98) 100%)",
             border: `1px solid ${colors.border}`,
             boxShadow: "0 4px 24px rgba(0, 0, 0, 0.2)",
           }}
@@ -124,7 +123,7 @@ function FeaturedCard({ project }: { project: Project }) {
 
                 <h3
                   className="text-xl lg:text-2xl font-semibold mb-4 font-mono group-hover:text-accent transition-colors duration-300 leading-snug"
-                  style={{ color: "#cdd6f4" }}
+                  className="text-foreground"
                 >
                   {project.title}
                 </h3>
@@ -179,12 +178,9 @@ function WorkCard({ project, index }: { project: Project; index: number }) {
       transition={{ duration: 0.5, delay: index * 0.09 }}
     >
       <Link href={`/projects/${project.slug}`} className="group block h-full">
-        <div
-          className="relative rounded-xl overflow-hidden transition-all duration-300 h-full flex flex-col"
-          style={{
-            background: "linear-gradient(145deg, rgba(49, 50, 68, 0.95) 0%, rgba(30, 30, 46, 0.98) 100%)",
-            border: `1px solid ${colors.border}`,
-          }}
+        <article
+          className="card-bg relative rounded-xl overflow-hidden transition-all duration-300 h-full flex flex-col"
+          style={{ border: `1px solid ${colors.border}` }}
         >
           <div
             className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
@@ -225,7 +221,7 @@ function WorkCard({ project, index }: { project: Project; index: number }) {
 
             <h3
               className="text-base font-medium mb-2 font-mono group-hover:text-accent transition-colors duration-300 line-clamp-2 leading-snug flex-1"
-              style={{ color: "#cdd6f4" }}
+              className="text-foreground"
             >
               {project.title}
             </h3>
@@ -242,7 +238,7 @@ function WorkCard({ project, index }: { project: Project; index: number }) {
               <span>→</span>
             </div>
           </div>
-        </div>
+        </article>
       </Link>
     </motion.div>
   );

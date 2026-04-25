@@ -6,16 +6,21 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useState, useEffect } from "react";
 import SaturnIcon from "./SaturnIcon";
 
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/work", label: "Work" },
-  { href: "#writing", label: "Writing" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
-];
+const anchorLinks = ["#writing", "#about", "#contact"];
+
+function useNavLinks(pathname: string) {
+  return [
+    { href: "/", label: "Home" },
+    { href: "/work", label: "Work" },
+    { href: pathname === "/" ? "#writing" : "/#writing", label: "Writing" },
+    { href: pathname === "/" ? "#about" : "/#about", label: "About" },
+    { href: pathname === "/" ? "#contact" : "/#contact", label: "Contact" },
+  ];
+}
 
 export default function Header() {
   const pathname = usePathname();
+  const navLinks = useNavLinks(pathname);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -39,26 +44,17 @@ export default function Header() {
       }}
     >
       {/* System status bar — desktop only */}
-      <div
-        className="hidden md:flex items-center justify-between px-6 py-1"
-        style={{
-          backgroundColor: "rgba(17, 17, 27, 0.85)",
-          borderBottom: "1px solid rgba(108, 112, 134, 0.15)",
-        }}
-      >
-        <span className="text-[10px] font-mono" style={{ color: "#45475a" }}>
+      <div className="hidden md:flex items-center justify-between px-6 py-1 border-b border-border/15 bg-background/85">
+        <span className="text-[10px] font-mono text-surface-hover">
           [NIKEL.DESIGN] — SYS_v0.3
         </span>
-        <div className="flex items-center gap-5 text-[10px] font-mono" style={{ color: "#45475a" }}>
+        <div className="flex items-center gap-5 text-[10px] font-mono text-surface-hover">
           <span>LOC: BELGIUM</span>
           <span className="flex items-center gap-1.5">
-            <span
-              className="inline-block w-1.5 h-1.5 rounded-full animate-pulse"
-              style={{ backgroundColor: "#a6e3a1" }}
-            />
-            <span style={{ color: "#a6e3a1" }}>STATUS: ONLINE</span>
+            <span className="inline-block w-1.5 h-1.5 rounded-full animate-pulse bg-green" />
+            <span className="text-green">STATUS: ONLINE</span>
           </span>
-          <span style={{ color: "#cba6f7" }}>OPEN_TO_WORK</span>
+          <span className="text-accent">OPEN_TO_WORK</span>
         </div>
       </div>
 
@@ -76,11 +72,12 @@ export default function Header() {
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav aria-label="Main navigation" className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
+              aria-current={!anchorLinks.includes(link.href) && pathname === link.href ? "page" : undefined}
               className="text-sm font-mono text-foreground/60 hover:text-accent transition-colors relative py-2"
             >
               {link.label}
@@ -99,6 +96,7 @@ export default function Header() {
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
           aria-expanded={isMenuOpen}
+          aria-controls="mobile-nav"
           whileTap={{ scale: 0.95 }}
         >
           <motion.span
@@ -120,6 +118,7 @@ export default function Header() {
       </div>
 
       <motion.div
+        id="mobile-nav"
         initial={false}
         animate={{
           opacity: isMenuOpen ? 1 : 0,
@@ -128,7 +127,7 @@ export default function Header() {
         transition={{ duration: 0.3, ease: "easeOut" }}
         className="md:hidden overflow-hidden"
       >
-        <nav className="flex flex-col p-4 gap-2 border-t border-border/30">
+        <nav aria-label="Mobile navigation" className="flex flex-col p-4 gap-2 border-t border-border/30">
           {navLinks.map((link, index) => (
             <motion.div
               key={link.href}

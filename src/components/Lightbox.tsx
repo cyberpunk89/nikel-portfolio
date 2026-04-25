@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface LightboxProps {
@@ -10,50 +10,66 @@ interface LightboxProps {
 export default function Lightbox({ children }: LightboxProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [imageSrc, setImageSrc] = useState<string | null>(null);
+  const [imageAlt, setImageAlt] = useState<string>("");
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
 
-  const openLightbox = useCallback((src: string) => {
+  const openLightbox = useCallback((src: string, alt: string) => {
+    triggerRef.current = document.activeElement as HTMLElement;
     const fullSrc = src.startsWith("/") ? src : `/${src}`;
     setImageSrc(fullSrc);
+    setImageAlt(alt);
     setIsOpen(true);
-    document.body.style.overflow = "hidden";
   }, []);
 
   const closeLightbox = useCallback(() => {
     setIsOpen(false);
     setImageSrc(null);
+    triggerRef.current?.focus();
   }, []);
 
   useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+  }, [isOpen]);
+
+  // Move focus to close button when dialog opens
+  useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
+      setTimeout(() => closeButtonRef.current?.focus(), 50);
     }
   }, [isOpen]);
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isOpen) {
-        closeLightbox();
-      }
+      if (e.key === "Escape" && isOpen) closeLightbox();
+    };
+
+    // Focus trap — keep Tab inside the dialog
+    const handleTab = (e: KeyboardEvent) => {
+      if (!isOpen || e.key !== "Tab") return;
+      e.preventDefault();
+      closeButtonRef.current?.focus();
     };
 
     const handleImageClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (target.tagName === "IMG" && target.closest(".project-content")) {
         const src = target.getAttribute("src");
+        const alt = target.getAttribute("alt") ?? "";
         if (src) {
           e.preventDefault();
-          openLightbox(src);
+          openLightbox(src, alt);
         }
       }
     };
 
     document.addEventListener("keydown", handleEscape);
+    document.addEventListener("keydown", handleTab);
     document.addEventListener("click", handleImageClick, true);
 
     return () => {
       document.removeEventListener("keydown", handleEscape);
+      document.removeEventListener("keydown", handleTab);
       document.removeEventListener("click", handleImageClick, true);
     };
   }, [isOpen, openLightbox, closeLightbox]);
@@ -67,6 +83,9 @@ export default function Lightbox({ children }: LightboxProps) {
       <AnimatePresence>
         {isOpen && imageSrc && (
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Image preview"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -75,8 +94,10 @@ export default function Lightbox({ children }: LightboxProps) {
             onClick={closeLightbox}
           >
             <div className="absolute inset-0 bg-black/90 backdrop-blur-sm" />
-            
+
             <motion.button
+              ref={closeButtonRef}
+              aria-label="Close image"
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0, opacity: 0 }}
@@ -84,7 +105,7 @@ export default function Lightbox({ children }: LightboxProps) {
               onClick={closeLightbox}
               className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
             >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5 text-white">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5 text-white" aria-hidden="true">
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
@@ -100,13 +121,13 @@ export default function Lightbox({ children }: LightboxProps) {
             >
               <img
                 src={imageSrc}
-                alt=""
+                alt={imageAlt}
                 className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
                 style={{ filter: "drop-shadow(0 25px 50px rgba(0, 0, 0, 0.5))" }}
               />
             </motion.div>
 
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/40 text-xs font-mono">
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/60 text-xs font-mono" aria-hidden="true">
               Click anywhere or press ESC to close
             </div>
           </motion.div>

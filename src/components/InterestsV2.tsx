@@ -176,9 +176,8 @@ export default function InterestsV2() {
                 style={{ scrollSnapAlign: "start" }}
               >
                 <div
-                  className="rounded-xl p-5 h-full cursor-default relative overflow-hidden"
+                  className="card-bg rounded-xl p-5 h-full cursor-default relative overflow-hidden"
                   style={{
-                    background: "linear-gradient(145deg, rgba(49, 50, 68, 0.95) 0%, rgba(30, 30, 46, 0.98) 100%)",
                     border: `1px solid ${c.hex}30`,
                     boxShadow: `0 2px 12px rgba(0,0,0,0.15)`,
                   }}

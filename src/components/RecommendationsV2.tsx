@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { useState } from "react";
 import recommendations from "../../content/rec.json";
 
 import scalarLogo from "@/media/company_logo/scalar.jpg";
@@ -36,7 +37,7 @@ function renderWithBold(text: string, terms: string[], accent: string) {
   return marked.split("@@").map((part, i) => {
     const isBold = terms.some((t) => t.toLowerCase() === part.toLowerCase());
     return isBold
-      ? <span key={i} className="font-semibold" style={{ color: accent }}>{part}</span>
+      ? <span key={i} style={{ color: accent }}>{part}</span>
       : part;
   });
 }
@@ -47,74 +48,94 @@ function simplifyDate(date: string) {
 
 function RecCard({ rec, index }: { rec: Recommendation; index: number }) {
   const meta = companyMeta[rec.company] || { color: "#cba6f7", name: rec.company, logo: null };
-  const isLeft = index % 2 === 0;
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="relative overflow-hidden min-h-72 flex flex-col font-mono"
+      style={{
+        background: "rgba(17, 17, 27, 0.8)",
+        border: `2px solid ${meta.color}40`,
+        boxShadow: `0 0 20px ${meta.color}10, inset 0 0 20px ${meta.color}05`,
+      }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
     >
-      <div
-        className="rounded-2xl p-6 md:p-8 relative overflow-hidden"
-        style={{
-          background: "rgba(22, 23, 33, 0.98)",
-          border: `1px solid ${meta.color}20`,
-          borderLeft: `3px solid ${meta.color}`,
-        }}
-      >
-        {/* Ambient */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: `linear-gradient(135deg, ${meta.color}06 0%, transparent 50%)` }}
-        />
+      {/* Terminal scanlines effect */}
+      <div className="absolute inset-0 pointer-events-none opacity-5" style={{
+        backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.15) 2px, rgba(0,0,0,.15) 4px)",
+      }} />
 
-        <div className="relative z-10 flex flex-col md:flex-row gap-6 md:gap-10">
-          {/* Author column — left on even, right on odd (desktop) */}
-          <div className={`md:w-52 shrink-0 flex flex-row md:flex-col gap-4 md:gap-3 items-start ${!isLeft ? "md:order-last" : ""}`}>
-            <div className="flex items-center gap-3 md:gap-0 md:flex-col md:items-start">
-              {meta.logo && (
-                <div className="w-8 h-8 rounded-md overflow-hidden relative shrink-0 md:mb-3">
-                  <Image src={meta.logo} alt={meta.name} fill className="object-contain" />
-                </div>
-              )}
+      {/* Main quote area */}
+      <div className="flex-1 flex flex-col justify-center p-8 md:p-10 relative z-10">
+        {/* Command prompt */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.05 }}
+          className="text-xs mb-4 opacity-50"
+          style={{ color: meta.color }}
+        >
+          $ recommendation.output:
+        </motion.div>
+
+        {/* Quote output */}
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1, duration: 0.5 }}
+          className="text-sm md:text-base leading-7"
+          style={{ color: "#cdd6f4" }}
+        >
+          &gt; {renderWithBold(rec.text, boldTermsByIndex[index] || [], meta.color)}
+        </motion.p>
+      </div>
+
+      {/* Footer — Author details scaled down */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+        className="border-t p-6 relative z-10"
+        style={{ borderColor: `${meta.color}30`, background: `${meta.color}05` }}
+      >
+        <div className="flex items-end gap-4 justify-between">
+          {/* Left: Author info */}
+          <div className="flex items-center gap-3 min-w-0">
+            {meta.logo && (
+              <div className="w-10 h-10 rounded border shrink-0 relative overflow-hidden" style={{ borderColor: `${meta.color}60` }}>
+                <Image src={meta.logo} alt={meta.name} fill className="object-contain" />
+              </div>
+            )}
+            <div className="text-[11px] space-y-0.5 min-w-0">
               <div>
-                <p className="font-semibold text-sm text-foreground leading-tight">{rec.name}</p>
-                <p className="text-xs mt-0.5" style={{ color: meta.color }}>{rec.title}</p>
-                <p className="text-[11px] text-foreground/35 font-mono mt-0.5">{meta.name}</p>
+                <span className="opacity-50">by</span> <span style={{ color: meta.color }} className="font-semibold">{rec.name}</span>
+              </div>
+              <div className="opacity-60">
+                {rec.title} @ {meta.name}
               </div>
             </div>
-            <span
-              className="text-[10px] font-mono px-2 py-0.5 rounded shrink-0 self-start"
-              style={{ backgroundColor: `${meta.color}12`, color: `${meta.color}99` }}
-            >
-              {simplifyDate(rec.date)}
-            </span>
           </div>
 
-          {/* Quote */}
-          <div className="flex-1 min-w-0">
-            {/* Large decorative quote mark */}
-            <div
-              className="text-5xl font-serif leading-none mb-3 select-none"
-              style={{ color: meta.color, opacity: 0.25 }}
-              aria-hidden
-            >
-              &ldquo;
-            </div>
-            <p className="text-sm md:text-base leading-7 text-foreground/80">
-              {renderWithBold(rec.text, boldTermsByIndex[index] || [], meta.color)}
-            </p>
-          </div>
+          {/* Right: Date */}
+          <motion.div
+            className="text-[10px] opacity-50 whitespace-nowrap"
+            style={{ color: meta.color }}
+          >
+            {simplifyDate(rec.date)}
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }
 
 export default function RecommendationsV2() {
   const recs: Recommendation[] = recommendations.recommendations;
+  const [current, setCurrent] = useState(0);
+
+  const next = () => setCurrent((prev) => (prev + 1) % recs.length);
+  const prev = () => setCurrent((prev) => (prev - 1 + recs.length) % recs.length);
 
   return (
     <section className="py-24 px-6">
@@ -146,10 +167,79 @@ export default function RecommendationsV2() {
           What colleagues and collaborators say — unedited.
         </motion.p>
 
-        <div className="flex flex-col gap-4">
-          {recs.map((rec, index) => (
-            <RecCard key={rec.name} rec={rec} index={index} />
-          ))}
+        {/* Carousel */}
+        <div className="relative">
+          <div aria-live="polite" aria-atomic="true" aria-label={`Recommendation ${current + 1} of ${recs.length}`}>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.4 }}
+            >
+              <RecCard rec={recs[current]} index={current} />
+            </motion.div>
+          </AnimatePresence>
+          </div>
+
+          {/* Navigation buttons */}
+          <div className="flex items-center justify-between mt-8 gap-4">
+            <div className="flex gap-2">
+              <button
+                onClick={prev}
+                className="p-2.5 rounded-lg transition-all duration-200 hover:bg-foreground/5 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                style={{ focusRing: "2px", focusRingOffset: "2px" }}
+                aria-label="Previous recommendation"
+              >
+                <svg
+                  className="w-5 h-5 text-foreground/60 hover:text-foreground/90"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                onClick={next}
+                className="p-2.5 rounded-lg transition-all duration-200 hover:bg-foreground/5 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                aria-label="Next recommendation"
+              >
+                <svg
+                  className="w-5 h-5 text-foreground/60 hover:text-foreground/90"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Dots indicator */}
+            <div className="flex gap-2 items-center">
+              {recs.map((_, index) => (
+                <motion.button
+                  key={index}
+                  onClick={() => setCurrent(index)}
+                  className="rounded-full transition-all duration-200"
+                  style={{
+                    width: current === index ? 32 : 8,
+                    height: 8,
+                    backgroundColor: current === index ? "rgba(203, 166, 247, 0.8)" : "rgba(203, 166, 247, 0.2)",
+                  }}
+                  aria-label={`Go to recommendation ${index + 1}`}
+                  aria-current={current === index}
+                />
+              ))}
+            </div>
+
+            {/* Counter */}
+            <div className="text-sm font-mono text-foreground/50">
+              {current + 1} / {recs.length}
+            </div>
+          </div>
         </div>
 
         <motion.div
@@ -157,7 +247,7 @@ export default function RecommendationsV2() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-8 flex justify-center"
+          className="mt-12 flex justify-center"
         >
           <a
             href="https://www.linkedin.com/in/ninad-ketkale"
@@ -165,7 +255,7 @@ export default function RecommendationsV2() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 ghost-btn font-mono text-sm rounded-lg"
           >
-            View on LinkedIn →
+            View all on LinkedIn →
           </a>
         </motion.div>
       </div>

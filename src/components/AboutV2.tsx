@@ -176,7 +176,11 @@ function TradingCard({
 
       <div
         className={`${cardClass} p-4 mb-3 group cursor-pointer md:cursor-default`}
+        role="button"
+        tabIndex={0}
+        aria-expanded={isExpanded}
         onClick={onToggle}
+        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onToggle(); } }}
       >
         <div className="flex items-start gap-4 mb-4">
           {exp.logo ? (
@@ -193,12 +197,12 @@ function TradingCard({
           )}
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-1 flex-wrap">
-              <h4 className="text-lg font-bold" style={{ color: "#cdd6f4" }}>
+              <h4 className="text-lg font-bold text-foreground">
                 {exp.company}
               </h4>
               <span
                 className="text-xs px-2 py-1 rounded"
-                style={{ backgroundColor: exp.color, color: "#1e1e2e" }}
+                style={{ backgroundColor: exp.color, color: "var(--background)" }}
               >
                 {exp.roles[0]}
               </span>
@@ -206,19 +210,19 @@ function TradingCard({
                 className="hidden md:inline-block ml-auto text-xs font-mono px-2 py-1 rounded-lg"
                 style={{
                   backgroundColor: exp.period.includes("Present") ? "#a6e3a118" : `${exp.color}12`,
-                  color: exp.period.includes("Present") ? "#a6e3a1" : "#cdd6f4",
+                  color: exp.period.includes("Present") ? "var(--green)" : "var(--foreground)",
                 }}
               >
                 {exp.period}
               </span>
             </div>
             <div className="flex items-center gap-2 flex-wrap md:hidden">
-              <p className="text-xs" style={{ color: "#cdd6f4", opacity: 0.5 }}>
+              <p className="text-xs text-foreground/50">
                 {exp.location} · {exp.period}
               </p>
             </div>
             <div className="hidden md:flex items-center gap-2 flex-wrap">
-              <p className="text-xs" style={{ color: "#cdd6f4", opacity: 0.5 }}>
+              <p className="text-xs text-foreground/50">
                 {exp.location}
               </p>
               {exp.website && (
@@ -248,15 +252,11 @@ function TradingCard({
           ))}
         </div>
 
-        <div
-          className="text-xs p-3 rounded-lg"
-          style={{ backgroundColor: "rgba(30, 30, 46, 0.6)" }}
-        >
+        <div className="text-xs p-3 rounded-lg bg-background/60">
           {exp.bulletPoints.map((point, i) => (
             <p
               key={i}
-              className="flex items-baseline gap-2 mb-1 last:mb-0"
-              style={{ color: "#cdd6f4", opacity: 0.8 }}
+              className="flex items-baseline gap-2 mb-1 last:mb-0 text-foreground/80"
             >
               <span style={{ color: exp.color }}>▸</span>
               <span>{point}</span>

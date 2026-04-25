@@ -797,6 +797,10 @@ select:focus-visible,
   );
 }
 
+.card-bg {
+  background: linear-gradient(145deg, rgba(49, 50, 68, 0.95) 0%, rgba(30, 30, 46, 0.98) 100%);
+}
+
 .ghost-btn {
   border: 1px solid rgba(203, 166, 247, 0.3);
   color: var(--accent);

@@ -180,12 +180,8 @@ export default function ContactV2() {
           className="font-mono"
         >
           <div
-            className="rounded-xl overflow-hidden"
-            style={{
-              background: "linear-gradient(145deg, rgba(49, 50, 68, 0.98) 0%, rgba(30, 30, 46, 0.99) 100%)",
-              border: "2px solid var(--border)",
-              boxShadow: "0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(203, 166, 247, 0.08)",
-            }}
+            className="card-bg rounded-xl overflow-hidden border-2 border-border"
+            style={{ boxShadow: "0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(203, 166, 247, 0.08)" }}
           >
             {/* Title bar */}
             <div
@@ -233,8 +229,10 @@ export default function ContactV2() {
                 <div className="mt-3">
                   <form onSubmit={handleSubmit} className="flex items-center gap-2">
                     <span style={{ color: "var(--green)" }}>›</span>
+                    <label htmlFor="terminal-input" className="sr-only">Type a command</label>
                     <input
                       ref={inputRef}
+                      id="terminal-input"
                       type="text"
                       value={input}
                       onChange={(e) => setInput(e.target.value)}

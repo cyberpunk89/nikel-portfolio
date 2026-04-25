@@ -58,10 +58,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       transition={{ duration: 0.5, delay: index * 0.08 }}
     >
       <Link href={`/projects/${project.slug}`} className="group block">
-        <div
-          className="rounded-xl overflow-hidden flex flex-col md:flex-row transition-all duration-300"
+        <article
+          className="card-bg rounded-xl overflow-hidden flex flex-col md:flex-row transition-all duration-300"
           style={{
-            background: "linear-gradient(145deg, rgba(49, 50, 68, 0.95) 0%, rgba(30, 30, 46, 0.98) 100%)",
             border: `1px solid ${accent}28`,
             boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
           }}
@@ -87,13 +86,6 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 </span>
               </div>
             )}
-            {/* Index badge */}
-            <div
-              className="absolute top-3 left-3 text-[10px] font-mono px-2 py-0.5 rounded"
-              style={{ backgroundColor: `${accent}20`, border: `1px solid ${accent}40`, color: accent }}
-            >
-              {String(index + 1).padStart(2, "0")}
-            </div>
           </div>
 
           {/* Content */}
@@ -134,7 +126,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               </span>
             </div>
           </div>
-        </div>
+        </article>
       </Link>
     </motion.div>
   );
