@@ -10,6 +10,7 @@ interface WorkV2Props {
 }
 
 const projectDescriptions: Record<string, string> = {
+  "scalar-home-redesign": "From complex drill-downs to intuitive widgets. How user research led to a modular home screen for fleet dispatchers.",
   doula: "A full UX upgrade of a pregnancy companion app.",
   "sagefund-design-challenge": "Exploring what a research-first approach looks like in practice.",
   "sirelo-homepage-redesign-journey": "From cluttered to clear. A full homepage redesign that moved the needle.",
@@ -22,6 +23,7 @@ const projectDescriptions: Record<string, string> = {
 };
 
 const cardColors: Record<string, { border: string; glow: string; tag: string; accent: string }> = {
+  "scalar-home-redesign": { border: "rgba(243, 139, 168, 0.3)", glow: "rgba(243, 139, 168, 0.12)", tag: "red", accent: "#f38ba8" },
   doula: { border: "rgba(203, 166, 247, 0.3)", glow: "rgba(203, 166, 247, 0.12)", tag: "mauve", accent: "#cba6f7" },
   "sagefund-design-challenge": { border: "rgba(166, 227, 161, 0.3)", glow: "rgba(166, 227, 161, 0.12)", tag: "green", accent: "#a6e3a1" },
   "sirelo-homepage-redesign-journey": { border: "rgba(250, 179, 135, 0.3)", glow: "rgba(250, 179, 135, 0.12)", tag: "peach", accent: "#fab387" },

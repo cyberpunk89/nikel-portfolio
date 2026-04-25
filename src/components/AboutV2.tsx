@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
 
+import profilePic from "@/media/Profile.jpg";
 import scalarLogo from "@/media/company_logo/scalar.jpg";
 import sireloLogo from "@/media/company_logo/sirelo_logo.jpg";
 import sagefundLogo from "@/media/company_logo/sagefund_logo.jpg";
@@ -320,10 +321,16 @@ export default function AboutV2() {
               <div className="p-6 text-center relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-mauve/5 to-transparent pointer-events-none" />
                 <div className="relative">
-                  <div className="w-28 h-28 mx-auto mb-4 rounded-full bg-surface-hover flex items-center justify-center text-5xl float-3d"
+                  <div className="w-28 h-28 mx-auto mb-4 rounded-full bg-surface-hover overflow-hidden relative"
                     style={{ border: "2px solid rgba(203, 166, 247, 0.2)" }}
                   >
-                    👾
+                    <Image
+                      src={profilePic}
+                      alt="Ninad Ketkale"
+                      fill
+                      className="object-cover"
+                      priority
+                    />
                   </div>
                   <h3 className="text-lg font-semibold mb-0.5">Ninad "Nikel" Ketkale</h3>
                   <p className="text-foreground/50 font-mono text-xs mb-4">UI/UX Designer · Belgium</p>
